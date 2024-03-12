@@ -3,13 +3,14 @@
     "name": "bethanys-v2",
     "slug": "bethanys-v2",
     "version": "1.0.0",
+    "scheme": "myapp",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/splash_custom.png",
+      "image": "./assets/bethanys.png",
       "resizeMode": "contain",
-      "backgroundColor": "#d77984"
+      "backgroundColor": "#d77948"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -20,11 +21,16 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#d77984"
+        "backgroundColor": "#d77948"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    }
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-font",
+      "expo-router"
+    ]
   }
 }
