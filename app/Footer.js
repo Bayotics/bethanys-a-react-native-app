@@ -16,7 +16,7 @@ const Footer = () => {
             <Text 
                 style={styles.menu}
                 onPress={() => {
-                    router.push('/about');
+                    router.push('/About');
                 }}
             >   
                 ABOUT
