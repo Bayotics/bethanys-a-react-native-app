@@ -1,14 +1,25 @@
-import { StyleSheet, View, Image, Text, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, View, Image,Text, TouchableWithoutFeedback } from 'react-native';
 import { useRouter } from 'expo-router';
-import { AntDesign, Feather} from '@expo/vector-icons';
+import { BethanyContext } from './bethanyContext';
+import { useEffect, useContext } from 'react';
+import { AntDesign, Feather, FontAwesome } from '@expo/vector-icons';
 
 
-const Header = () => {
+const Header = () => { 
     const logo = require('../assets/bethanys-pie-shop-logo_horiz-white.png');
     const router = useRouter();
+    //added for login
+    const {toggleLogin,getUser, isLoggedIn} = useContext(BethanyContext)
+    
+    useEffect(() => {
+        console.log('getUser function running');
+        getUser();    
+    },[isLoggedIn]);
 
-    return (
-        <View style = {styles.header}>
+    let display = isLoggedIn ?  <FontAwesome name="user-circle-o" size={24} color="black" /> : <AntDesign style={styles.menu} name='user' size={24} color='white'/>;
+    
+    return(
+        <View style={styles.header}>
             <TouchableWithoutFeedback
                 onPress={() => {
                     router.replace('/');
@@ -19,11 +30,11 @@ const Header = () => {
                     style={styles.logoStyle}
                 />
             </TouchableWithoutFeedback>
-            <Text style = {styles.menu}>SHOP</Text>
+            <Text style={styles.menu}>SHOP</Text>
             <Text 
                 style={styles.menu}
                 onPress={() => {
-                    router.push('/Contact');
+                    router.push('/contact');
                 }}
             >
                 CONTACT
@@ -36,10 +47,15 @@ const Header = () => {
             >
                 REGISTER
             </Text>
-            <AntDesign style = {styles.menu} name='user' size={24} />
-            <Feather style = {styles.menu} name='shopping-cart' size={24} />
+            <Text
+                style={styles.menu}
+                onPress={toggleLogin}            
+            >
+                {display}
+            </Text>
+            <Feather style={styles.menu} name='shopping-cart' size={24} color='white' />
         </View>
-    )
+    );
 };
 
 const styles = StyleSheet.create({
@@ -64,7 +80,6 @@ const styles = StyleSheet.create({
         fontFamily:'WorkSans-Regular',
         fontWeight: '700' 
     }
-})
+});
 
-
-export default Header
+export default Header;
