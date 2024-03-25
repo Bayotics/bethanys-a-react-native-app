@@ -28,7 +28,14 @@ const Header = () => {
             >
                 CONTACT
             </Text>
-            <Text style = {styles.menu}>REGISTER</Text>
+            <Text 
+                style={styles.menu}
+                onPress={() => {
+                    router.push('/register');
+                }}
+            >
+                REGISTER
+            </Text>
             <AntDesign style = {styles.menu} name='user' size={24} />
             <Feather style = {styles.menu} name='shopping-cart' size={24} />
         </View>
