@@ -4,20 +4,31 @@ import { BethanyContext } from './bethanyContext';
 import { useEffect, useContext } from 'react';
 import { AntDesign, Feather, FontAwesome } from '@expo/vector-icons';
 
-
 const Header = () => { 
     const logo = require('../assets/bethanys-pie-shop-logo_horiz-white.png');
     const router = useRouter();
-    //added for login
-    const {toggleLogin,getUser, isLoggedIn} = useContext(BethanyContext)
+    const {
+        toggleLogin,
+        getUser, 
+        isLoggedIn, 
+        toggleCart, 
+        cartLoaded, 
+        getCartCount
+    } = useContext(BethanyContext);
     
     useEffect(() => {
-        console.log('getUser function running');
+        console.log('Contents of cart: ', );
         getUser();    
-    },[isLoggedIn]);
+    },[isLoggedIn, cartLoaded]);
 
-    let display = isLoggedIn ?  <FontAwesome name="user-circle-o" size={24} color="black" /> : <AntDesign style={styles.menu} name='user' size={24} color='white'/>;
+    let display = isLoggedIn ?  
+    <FontAwesome name="user-circle-o" size={24} color="black" /> : 
+    <FontAwesome name="user-circle-o" size={24} color="white" />;
     
+    let cartDisplay = cartLoaded ? 
+        <Feather name='shopping-cart' size={24} color='black' /> : 
+        <Feather name='shopping-cart' size={24} color='white' />;
+
     return(
         <View style={styles.header}>
             <TouchableWithoutFeedback
@@ -30,7 +41,14 @@ const Header = () => {
                     style={styles.logoStyle}
                 />
             </TouchableWithoutFeedback>
-            <Text style={styles.menu}>SHOP</Text>
+            <Text 
+                style={styles.menu}
+                onPress={() => {
+                    router.push('/shop');
+                }}    
+            >
+                SHOP
+            </Text>
             <Text 
                 style={styles.menu}
                 onPress={() => {
@@ -53,7 +71,15 @@ const Header = () => {
             >
                 {display}
             </Text>
-            <Feather style={styles.menu} name='shopping-cart' size={24} color='white' />
+            <Text
+                style={styles.menu}
+                onPress={toggleCart}            
+            >
+                {cartDisplay}
+                {getCartCount()}
+                
+            </Text>
+            
         </View>
     );
 };

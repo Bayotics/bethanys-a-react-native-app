@@ -1,10 +1,4 @@
-import { 
-    View, 
-    Text, 
-    Image, 
-    StyleSheet, 
-    Platform 
-} from 'react-native';
+import { View, Text, Image, StyleSheet, Platform } from 'react-native';
 import PieDisplay from '../components/pieDisplay';
 
 const Home = () => {
@@ -26,8 +20,8 @@ const Home = () => {
             <Text style={styles.pageTitle}>Pies of the Week</Text>
             <Text style={styles.pageText}>Enjoy a weekly selection of our favorite pies</Text>
             <View style={styles.pieRow}>
-                <PieDisplay pieImage={pieA} product='classic apple pie' />
-                <PieDisplay pieImage={pieB} product='pumpkin pie' />
+                <PieDisplay pieImage={pieA} product='classic apple pie' prodId='CP-01' />
+                <PieDisplay pieImage={pieB} product='pumpkin pie' prodId='CP-02' />
             </View>
         </View>
     );
