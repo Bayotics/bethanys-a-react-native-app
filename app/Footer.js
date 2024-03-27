@@ -1,9 +1,16 @@
 import { StyleSheet, View, Text, Dimensions, Platform, Image } from 'react-native';
 import { useRouter } from 'expo-router';
+import * as WebBrowser from 'expo-web-browser';
 
 const windowDimensions = Dimensions.get('window');
 const WinHeight = windowDimensions.height
 const smallLogo = require('../assets/bethanys-pie-shop-logo_extra-4-black.png');
+
+const bethanyTube = () => {
+    WebBrowser.openBrowserAsync(
+      'https://www.youtube.com/@pluralsight'
+    );
+  };
 
 const Footer = () => {
     const router = useRouter();
@@ -16,7 +23,7 @@ const Footer = () => {
             <Text 
                 style={styles.menu}
                 onPress={() => {
-                    router.push('/About');
+                    router.push('/about');
                 }}
             >   
                 ABOUT
@@ -29,8 +36,20 @@ const Footer = () => {
             >
                 NEWS
             </Text>
-            <Text style={styles.menu}>BLOG</Text>
-            <Text style={styles.menu}>YOUTUBE</Text>
+            <Text 
+                style={styles.menu}
+                onPress={() => {
+                    router.push('/Blog');
+                }}
+            >
+                BLOG
+            </Text>
+            <Text 
+                style={styles.menu}
+                onPress={bethanyTube}
+            >
+                YOUTUBE
+            </Text>
         </View>
     );
 

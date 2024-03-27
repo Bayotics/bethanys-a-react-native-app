@@ -19,7 +19,7 @@ export const BethanyProvider = (props) =>  {
 
     const toggleCart = () => {
         if (cartLoaded) {
-            router.push('/cart');
+            router.push('/Cart');
         }
         else {
             Alert.alert('No items in shopping cart');
