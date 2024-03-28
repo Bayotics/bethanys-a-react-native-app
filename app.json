@@ -22,7 +22,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#d77948"
-      }
+      },
+      "package": "com.bayospending.bethanysv2"
     },
     "web": {
       "favicon": "./assets/favicon.png",
@@ -31,6 +32,14 @@
     "plugins": [
       "expo-font",
       "expo-router"
-    ]
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "93d34c22-5096-4d82-b6ec-e4be24fa81f5"
+      }
+    }
   }
 }
